@@ -4,3 +4,14 @@ main: me.joeri.myfirstplugin.MyFirstPlugin
 api-version: 1.17
 authors: [ Joeri ]
 description: My first plugin
+commands:
+  die:
+    description: An easy way to kill yourself.
+    usage: </command>
+  doorkey:
+    description: Gives the player an doorkey.
+    usage: </command>
+  chestkey:
+    description: Gives the player an chestkey
+    usage: </command>
+

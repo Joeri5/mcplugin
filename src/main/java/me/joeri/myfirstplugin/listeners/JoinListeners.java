@@ -45,7 +45,7 @@ public class JoinListeners implements Listener {
         Block block = event.getClickedBlock();
         assert block != null;
 
-        if (!block.getType().toString().contains("CHEST")) return;
+        if (!block.getType().toString().contains(Material.CHEST.toString()) && !block.getType().toString().contains(Material.BARREL.toString())) return;
 
         if (event.getItem() != null) {
 
