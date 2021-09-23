@@ -41,6 +41,27 @@ public class JoinListeners implements Listener {
     }
 
     @EventHandler
+    public void fence(PlayerInteractEvent event){
+        Block block = event.getClickedBlock();
+        assert block != null;
+
+        if (!block.getType().toString().contains("FENCE")) return;
+
+        if (event.getItem() != null) {
+            // ja voert hij alles hieronder uit
+            Material material = event.getItem().getType();
+
+            if (!material.equals(Material.STICK)) {
+                event.setCancelled(true);
+            }
+            return;
+        }
+
+        // hier
+        event.setCancelled(true);
+    }
+
+    @EventHandler
     public void tp(PlayerInteractEvent event){
         Block block = event.getClickedBlock();
         assert block != null;
