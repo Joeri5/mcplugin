@@ -1,13 +1,8 @@
 package me.joeri.myfirstplugin;
 
-import me.joeri.myfirstplugin.listeners.JoinListeners;
+import me.joeri.myfirstplugin.commands.*;
+import me.joeri.myfirstplugin.listeners.*;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MyFirstPlugin extends JavaPlugin {
@@ -16,46 +11,30 @@ public final class MyFirstPlugin extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         System.out.println("Plugin has started");
-        Bukkit.getServer().getPluginManager().registerEvents(new JoinListeners(), this);//registeerd listener bij de server
+        Bukkit.getServer().getPluginManager().registerEvents(new JoinListener(), this);//registeerd listener bij de server
+        Bukkit.getServer().getPluginManager().registerEvents(new DoorListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new FenceListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new ChestListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerleavebedListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new SheerEvent(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayermoveListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new XpbottlebreakListener(), this);
+
+        getCommand("god").setExecutor(new GodCommand());
+        getCommand("die").setExecutor(new DieCommand());
+        getCommand("doorkey").setExecutor(new DoorkeyCommand());
+        getCommand("chestkey").setExecutor(new ChestkeyCommand());
+        getCommand("feed").setExecutor(new FeedCommand());
+        getCommand("health").setExecutor(new HealthCommand());
+        getCommand("hunger").setExecutor(new HungerCommand());
+        getCommand("lowhealth").setExecutor(new LowhealthCommand());
     }
+
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         System.out.println("Plugin has stopped");
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
-        // /die it kills the player
-        if (command.getName().equalsIgnoreCase("die")){
-
-            if (sender instanceof Player){
-
-                Player player = (Player) sender;
-                player.setHealth(0.0);
-                player.sendMessage(ChatColor.RED + "You have chosen to die.");
-            }
-
-        } else if (command.getName().equalsIgnoreCase("doorkey")){
-
-            if (sender instanceof Player){
-
-                Player player = (Player) sender;
-                player.getInventory().addItem(new ItemStack(Material.STICK));
-            }
-
-        } else if (command.getName().equalsIgnoreCase("chestkey")){
-
-            if (sender instanceof Player){
-
-                Player player = (Player) sender;
-                player.getInventory().addItem(new ItemStack(Material.POTATO));
-            }
-
-        }
-        return true;
     }
 
 }

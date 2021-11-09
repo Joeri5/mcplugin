@@ -5,13 +5,51 @@ api-version: 1.17
 authors: [ Joeri ]
 description: My first plugin
 commands:
+  god:
+    description: Become invincible
+    usage: /<command>
+    aliases:
+      - god
+      - pro
+      - invincible
+      - modmode
   die:
     description: An easy way to kill yourself.
-    usage: </command>
+    usage: /<command>
   doorkey:
     description: Gives the player an doorkey.
-    usage: </command>
+    usage: /<command>
   chestkey:
     description: Gives the player an chestkey
-    usage: </command>
+    usage: /<command>
+  feed:
+    description: Sets the players food bar to max
+    usage: /<command>
+    aliases:
+      - food
+      - hunger
+      - eat
+      - feeding
+  health:
+    description: Gives the player max health
+    usage: /<command>
+    aliases:
+      - health
+      - max health
+      - healing
+      - heal
+  hunger:
+    description: Makes the player hungry
+    usage: /<command>
+    aliases:
+      - hunger
+      - hungry
+  lowhealth:
+    description: Gives the player low health
+    usage: /<command>
+    aliases:
+      - almost dead
+      - low hearts
+      - low
+
 
